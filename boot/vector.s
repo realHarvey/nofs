@@ -1,0 +1,109 @@
+/*
+ *  中断向量表
+ *  Copyright(c) 2023  Harvey
+ *
+ *  stack初始地址为ram末地址(定义在链接脚本中)
+ */
+.section .vector, "a", %progbits
+.global vector
+
+vector :
+/* 内部异常 */
+    .type vector, %object
+    .word msp_init
+    .word start
+    .word 0x0
+    .word panic
+    // 可配置优先级
+    .word 0x0
+    .word 0x0
+    .word 0x0
+    .word 0
+    .word 0
+    .word 0
+    .word 0
+    .word do_svc
+    .word 0x0
+    .word 0x0
+    .word 0x0
+    .word timer_interrupt
+
+/* 外部中断 */
+    // 0
+    .word 0x0
+    .word 0x0
+    .word 0x0
+    .word 0x0
+    .word 0x0
+    // 5
+    .word 0x0
+    .word 0x0
+    .word 0x0
+    .word 0x0
+    .word 0x0
+    // 10
+    .word 0x0
+    .word 0x0
+    .word 0x0
+    .word 0x0
+    .word 0x0
+    // 15
+    .word 0x0
+    .word 0x0
+    .word 0x0
+    .word 0x0
+    .word 0x0
+    // 20
+    .word 0x0
+    .word 0x0
+    .word 0x0
+    .word 0x0
+    .word 0x0
+    // 25
+    .word 0x0
+    .word 0x0
+    .word 0x0
+    .word 0x0
+    .word 0x0
+    // 30
+    .word 0x0
+    .word 0x0
+    .word 0x0
+    .word 0x0
+    .word 0x0
+    // 35
+    .word 0x0
+    .word 0x0
+    .word tty_io_interrupt
+    .word 0x0
+    .word 0x0
+    // 40
+    .word 0x0
+    .word 0x0
+    .word 0x0
+    .word 0x0
+    .word 0x0
+    // 45
+    .word 0x0
+    .word 0x0
+    .word 0x0
+    .word 0x0
+    .word 0x0
+    // 50
+    .word 0x0
+    .word 0x0
+    .word 0x0
+    .word 0x0
+    .word 0x0
+    // 55
+    .word 0x0
+    .word 0x0
+    .word 0x0
+    .word 0x0
+    .word 0x0
+    // 60
+    .word 0x0
+    .word 0x0
+    .word 0x0
+    .word 0x0
+    .word 0x0
