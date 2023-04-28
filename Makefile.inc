@@ -10,7 +10,7 @@ SIZE := $(CROSS_COMPILE)size
 CPU = -mcpu=cortex-m3 \
 	  -mthumb \
 	  -mfloat-abi=soft
-LIBS = -lm -lc -lnosys
+LIBS = #-lm -lc -lnosys
 INC =
 DEPS = #-MMD -MP -MF"$(@:%.o=%.d)"
 
@@ -18,11 +18,9 @@ ASFLAGS = $(CPU) $(INC) $(DEPS) \
 		-ffunction-sections -fdata-sections -fno-common -fmessage-length=0 \
 		-Wall -Og -g
 CFLAGS  = $(CPU) $(INC) $(DEPS) \
-		-specs=nosys.specs \
 		-ffunction-sections -fdata-sections -fno-common -fmessage-length=0 -fno-builtin \
-		-Og -g -std=gnu11 -Werror \
-		-D MM=20
+		-Og -g -std=gnu11 -Werror
 LDFLAGS = $(CPU) $(INC) \
-		-specs=nano.specs -Tlinker.ld $(LIBS) \
+		-specs=nosys.specs -Tlinker.ld $(LIBS) \
 		-Wl,--gc-sections,--print-memory-usage \
 		-Wl,-Map=$(TARGET).map

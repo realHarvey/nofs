@@ -32,7 +32,6 @@ add_compile_options(
 )
 include_directories(
         kernel/include
-        ./
 )
 file(GLOB_RECURSE SOURCES
         "boot/*.*"

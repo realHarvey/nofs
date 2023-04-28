@@ -5,7 +5,7 @@ INC = -Iinclude
 
 all : clock.o memory.o panic.o \
 	  sched.o syscall.o timer.o \
-	  trap.o tty.o nvic.o test.o
+	  trap.o tty.o nvic.o
 
 trap.o : trap.c
 	$(CC) -c $(CFLAGS) $^
@@ -24,6 +24,4 @@ timer.o : timer.c
 tty.o : tty.c
 	$(CC) -c $(CFLAGS) $^
 nvic.o : nvic.c
-	$(CC) -c $(CFLAGS) $^
-test.o : test.c
 	$(CC) -c $(CFLAGS) $^

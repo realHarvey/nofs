@@ -10,7 +10,7 @@ case $input in
         ;;
     "m")
         make clean
-        bear -- make
+        bear -- make # ubuntu20及以下: bear make
         ;;
     *)
         exit
