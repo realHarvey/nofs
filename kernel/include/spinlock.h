@@ -6,6 +6,30 @@
 #include "compiler.h"
 #include "arm.h"
 #include "sched.h"
+
+static inline void atomic_set(void *var, int num)
+{
+    int tmp;
+    __asm volatile (
+    "ldrex %2, [%0] \n"
+    "mov %2, %1 \n"
+    "strex %2, %2, [%0]"
+    :"=&r"(var)
+    :"i"(num),"r"(tmp));
+}
+
+static inline void atomic_inc(void *var)
+{
+    int tmp;
+    __asm volatile (
+    "ldrex %1, [%0] \n"
+    "add %1, #1 \n"
+    "strex %1, %1, [%0]"
+    :"=&r"(var)
+    :"r"(tmp));
+}
+
+
 /*
  * spinlock
  *

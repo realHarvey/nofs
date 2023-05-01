@@ -3,9 +3,9 @@
 read -p " CHOOSE [c]cmake / [m]make : " input
 case $input in
     "c")
+        rm -rf build
         cd build
-        rm -rf * *.*
-        cmake .. -DCMAKE_EXPORT_COMPILE_COMMANDS=1
+        cmake .. -G "Unix Makefiles" -DCMAKE_EXPORT_COMPILE_COMMANDS=1
         make
         ;;
     "m")
